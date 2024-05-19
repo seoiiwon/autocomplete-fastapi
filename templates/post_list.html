@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/post_list.css') }}">
+    <script src="{{ url_for('static', path='js/post_list.js') }}" defer></script>
+    <title>FastAPI Board</title>
+</head>
+<body>
+    <h1>FastAPI 게시판</h1>
+
+    <form action="/api/post/search" method="get">
+        <div class="search">
+        <input id="searchBar" type="text" name="keyword" placeholder="검색어 입력">
+        <button>
+            <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+        </button>        
+    </div>
+    </form>
+
+    <div class="listBox">
+        <ul>
+            {% for post in post_list %}
+            <li>
+                <a class="detailA" href="">{{ post.subject }}</a>
+                <span>{{ post.date.strftime('(%Y.%m.%d %H:%M)') }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="create">
+        <a class="createA" href="">글쓰기</a>
+    </div>
+    
+</body>
+</html>

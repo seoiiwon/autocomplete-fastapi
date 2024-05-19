@@ -1,0 +1,102 @@
+@font-face {
+    font-weight: 400;
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+}
+
+body{
+    background-color: #0064FF;
+    font-family: 'Pretendard-Regular';
+}
+
+h1{
+    color: white;
+    text-align: center;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
+    font-size: 3rem;
+}
+
+.search {
+  position: relative;
+  width: 25vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-63%, -50%);
+}
+
+input {
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  padding: 1.2vh 3vw;
+  font-size: 1rem;
+}
+input:hover{
+    cursor: text;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+}
+
+img {
+  position : absolute;
+  width: 1.5rem;
+  top: 20%;
+  right: -3vw;
+  margin: 0;
+}
+img:hover{
+    cursor: pointer;
+}
+
+.listBox{
+    background-color: white;
+    border-radius: 80px;
+    height: 65vh;
+    width: 65vw;
+    margin: 2vh auto;
+    overflow: scroll;
+}::-webkit-scrollbar {
+    display: none;
+}
+
+ul{
+    list-style:none;
+    padding-left:0px;
+}
+
+li{
+    border-bottom: 2px solid gray;
+    padding: 3vh 0;
+    margin: 0 3vw;
+    font-size: 1.1rem;
+}
+
+.detailA {
+    color: black;
+    margin:0 auto 0 5vw;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.create {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 8vh;
+    height: 5vh;
+    background-color: white;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.createA {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
