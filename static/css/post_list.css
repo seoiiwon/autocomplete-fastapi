@@ -17,12 +17,12 @@
 }
 
 body{
-    background-color: #0064FF;
+    background-color: white;
     font-family: 'Pretendard-Regular';
 }
 
 h1{
-    color: white;
+    color: #4585FB;
     text-align: center;
     padding-top: 3vh;
     padding-bottom: 2vh;
@@ -39,7 +39,7 @@ h1{
 
 input {
   width: 100%;
-  border: none;
+  border: 2px solid #4585FB;
   border-radius: 20px;
   padding: 1.2vh 3vw;
   font-size: 1rem;
@@ -71,6 +71,7 @@ img:hover{
     width: 65vw;
     margin: 2vh auto;
     overflow: scroll;
+    border: 2px solid #4585FB;
 }::-webkit-scrollbar {
     display: none;
 }
@@ -81,7 +82,7 @@ ul{
 }
 
 .contentList{
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #c8d9f8;
     padding: 3vh 0;
     margin: 0 3vw;
     font-size: 1.1rem;
@@ -97,6 +98,7 @@ ul{
   align-items: center;
   border-radius: 20px;
   position: absolute;
+  border: 0.7px solid black;
 }
 
 
@@ -113,13 +115,13 @@ ul{
     align-items: center; 
     width: 8vh;
     height: 5vh;
-    background-color: white;
+    background-color: #4585FB;
     margin: auto;
     border-radius: 20px;
 }
 
 .createA {
-    color: black;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
