@@ -4,6 +4,18 @@
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
 }
 
+.brandListStyle {
+  display: block;
+  width: 40vw;
+  text-align: center;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  align-items: center;
+  border-radius: 20px;
+  position: absolute;
+}
+
 body{
     background-color: #0064FF;
     font-family: 'Pretendard-Regular';
@@ -68,12 +80,25 @@ ul{
     padding-left:0px;
 }
 
-li{
+.contentList{
     border-bottom: 2px solid gray;
     padding: 3vh 0;
     margin: 0 3vw;
     font-size: 1.1rem;
 }
+
+.brandListStyle {
+  display: block;
+  width: 40vw;
+  text-align: center;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  align-items: center;
+  border-radius: 20px;
+  position: absolute;
+}
+
 
 .detailA {
     color: black;

@@ -32,7 +32,7 @@
     <div class="listBox">
       <ul>
         {% for post in post_list %}
-        <li>
+        <li class="contentList">
           <a class="detailA" href="">{{ post.subject }}</a>
           <span>{{ post.date.strftime('(%Y.%m.%d %H:%M)') }}</span>
         </li>
@@ -73,13 +73,15 @@
                 let name = brand[0];
                 let listItem = document.createElement("li");
                 listItem.textContent = `${brand}`;
+                listItem.style.cursor = "pointer";
+                listItem.style.padding = "1vh";
+                listItem.addEventListener("click", function() {
+                  document.getElementById("searchBar").value = this.textContent;
+                  get_list(this.textContent)
+                })
                 brandList.appendChild(listItem);
               });
-              brandList.style.display = "block";
-              brandList.style.width = "40vw";
-              brandList.style.textAlign = "center";
-              brandList.style.margin = "0 auto";
-              brandList.style.borderRadius = "30px";
+              brandList.classList.add('brandListStyle');
             })
             .catch((error) => console.error("Error:", error));
         }
