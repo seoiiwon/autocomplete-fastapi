@@ -1,9 +1,8 @@
 from api.models import Post
 from sqlalchemy.orm import Session
-from datetime import datetime
 
 
-def get_post_list(db : Session):
+def get_post_list(db: Session):
     post_list = db.query(Post).order_by(Post.date.desc()).all()
     return post_list
 

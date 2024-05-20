@@ -1,37 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', path='css/post_list.css') }}">
-    <script src="{{ url_for('static', path='js/post_list.js') }}" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FastAPI Board</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/post_list.css') }}"
+    />
+  </head>
+  <body>
     <h1>FastAPI 게시판</h1>
 
     <form action="/api/post/search" method="get">
-        <div class="search">
-        <input id="searchBar" type="text" name="keyword" placeholder="검색어 입력">
+      <div class="search">
+        <input
+          id="searchBar"
+          type="text"
+          name="keyword"
+          placeholder="검색어 입력"
+        />
         <button>
-            <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-        </button>        
-    </div>
+          <img
+            src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+          />
+        </button>
+      </div>
     </form>
+    <ul id="brand_list" style="background-color: white;"></ul>
 
     <div class="listBox">
-        <ul>
-            {% for post in post_list %}
-            <li>
-                <a class="detailA" href="">{{ post.subject }}</a>
-                <span>{{ post.date.strftime('(%Y.%m.%d %H:%M)') }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+      <ul>
+        {% for post in post_list %}
+        <li>
+          <a class="detailA" href="">{{ post.subject }}</a>
+          <span>{{ post.date.strftime('(%Y.%m.%d %H:%M)') }}</span>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
     <div class="create">
-        <a class="createA" href="">글쓰기</a>
+      <a class="createA" href="">글쓰기</a>
     </div>
-    
-</body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("searchBar")
+          .addEventListener("input", function () {
+            let text = this.value;
+            console.log(text);
+            if (text !== "") {
+              get_list(text);
+            }
+          });
+
+        function get_list(keyword) {
+          let url = `http://localhost:8000/api/post/?q=${keyword}`;
+          fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(
+                  "Network response was not ok " + response.statusText
+                );
+              }
+              return response.json();
+            })
+            .then((data) => {
+              let dataList = Array.isArray(data.brand) ? data.brand : [];
+              let brandList = document.getElementById("brand_list");
+              brandList.innerHTML = "";
+              dataList.forEach((brand) => {
+                let name = brand[0];
+                let listItem = document.createElement("li");
+                listItem.textContent = `${brand}`;
+                brandList.appendChild(listItem);
+              });
+              brandList.style.display = "block";
+              brandList.style.width = "40vw";
+              brandList.style.textAlign = "center";
+              brandList.style.margin = "0 auto";
+              brandList.style.borderRadius = "30px";
+            })
+            .catch((error) => console.error("Error:", error));
+        }
+      });
+    </script>
+  </body>
 </html>

@@ -5,4 +5,4 @@ class Post(BaseModel):
     id : int
     subject : str
     content : str
-    date : datetime.datetime 
+    date : datetime.datetime
