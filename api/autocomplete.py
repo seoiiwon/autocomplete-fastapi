@@ -1,5 +1,3 @@
-from api.models import Post
-from sqlalchemy.orm import Session
 import pandas as pd
 
 class Node:
@@ -23,5 +21,5 @@ def returnTrie():
             else:
                 current_node.children[kor].data.append(kor_name)
             current_node = current_node.children[kor]
-    
     return head
+
