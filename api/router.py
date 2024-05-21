@@ -5,23 +5,16 @@ from sqlalchemy.orm import Session
 from config.database import get_db
 from typing import Union
 from api import crud, autocomplete
-from api.autocomplete import SubjectName
+from api.autocomplete import SubjectName, returnTrie_ver3
 
 router = APIRouter(prefix="/api/post")
-
 templates = Jinja2Templates(directory="templates")
+
+# TRIE로 AUTOCOPLETE할 때 서버
 # head = autocomplete.returnTrie()
-subjectName = SubjectName()
-head = subjectName.returnTrie_ver2()
-
-@router.get("/")
-def return_value(q : Union[str, None] = None):
-    candidate = subjectName.searchTrie(q)
-    return {"brand" : candidate}
-
+# trie = Trie()
 # @router.get("/")
-# def return_value(q: Union[str, None] = None):
-#     print(q)
+# def return_value(q : Union[str, None]=None):
 #     if q is None:
 #         return None
 #     else:
@@ -31,7 +24,22 @@ def return_value(q : Union[str, None] = None):
 #                 current = current.children[key]
 #             else:
 #                 break
-#         return {"brand": current.data if isinstance(current.data, list) else []}
+#         return {"brand" : current.data if isinstance(current.data, list) else []}
+
+# JAMO 포함 AUTOCOMPLETE할 때 서버
+# subjectName = SubjectName()
+
+# @router.get("/")
+# def return_value(q : Union[str, None] = None):
+#     result = subjectName.searchTrie(q)
+#     return {"brand" : result}
+
+
+@router.get("/")
+def return_value(q: str = None):
+    result = returnTrie_ver3(q)
+    return {"brand": result if q is not None else []}
+
 
 @router.get("/list", response_class=HTMLResponse)
 def post_list_html(request: Request, db: Session = Depends(get_db), q: Union[str, None] = None):

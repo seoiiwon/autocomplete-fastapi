@@ -10,7 +10,7 @@
     />
   </head>
   <body>
-    <h1>FastAPI 게시판</h1>
+    <h1>Search Autocomplete</h1>
 
     <form action="/api/post/search" method="get">
       <div class="search">
@@ -69,6 +69,7 @@
               let dataList = Array.isArray(data.brand) ? data.brand : [];
               let brandList = document.getElementById("brand_list");
               brandList.innerHTML = "";
+              // console.log(brand);
               dataList.forEach((brand) => {
                 let name = brand[0];
                 let listItem = document.createElement("li");
